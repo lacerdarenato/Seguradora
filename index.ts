@@ -1,12 +1,11 @@
-'use strict';
-
 import * as Hapi from '@hapi/hapi';
+import { port, url } from './config'
 
 const init = async () => {
 
     const server = Hapi.server({
-        port: 3000,
-        host: 'localhost'
+        port: port,
+        host: url
     });
 
     await server.start();
