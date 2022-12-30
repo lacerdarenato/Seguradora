@@ -1,0 +1,29 @@
+{
+  "name": "seg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ts-node-dev": "ts-node-dev index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^21.1.0",
+    "colors": "^1.4.0",
+    "node-emoji": "^1.11.0",
+    "postgres": "^3.3.2",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.11"
+  },
+  "devDependencies": {
+    "@types/colors": "^1.2.1",
+    "@types/hapi": "^18.0.7",
+    "@types/node": "^18.11.18",
+    "@types/node-emoji": "^1.8.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.4"
+  }
+}
