@@ -1,13 +1,12 @@
 import * as Hapi from '@hapi/hapi';
 import { Server, ResponseToolkit, Request } from 'hapi'
-import { port, url } from './config';
 import 'colors'
 
 const init = async () => {
 
-    const server = Hapi.server({
-        port: port,
-        host: url
+    const server: Server = Hapi.server({
+        port: process.env.APP_PORT,
+        host: process.env.APP_HOST
     });
 
     server.route({

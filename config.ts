@@ -1,4 +1,9 @@
-require('dotenv').config();
+import dotenv from "dotenv";
+dotenv.config()
 
-export const port = process.env.PORT || 3000;
-export const url = process.env.URL || 'localhost';
+//Pesquisar pq n aceita conversão
+
+// export const port = parseInt(process.env.DATABASE_PORT) || 3000;
+export const dbUri = process.env.DATABSE_URI || 'localhost';
+export const dbUsername = process.env.DATABASE_USERNAME;
+export const dbPassword = process.env.DATABASE_PASSWORD;

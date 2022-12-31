@@ -1,20 +1,43 @@
+import * as Hapi from '@hapi/hapi';
+import { Server, ResponseToolkit, Request } from 'hapi'
+import 'colors'
+
 import { PostgresDataSource } from "./data-source.js"
 import { User } from "./entity/User.js"
 
-PostgresDataSource.initialize().then(async () => {
+PostgresDataSource.initialize()
+    .then(async () => {
+        console.log(`PostgresDataSource has been initialized`);
 
-    // console.log("Inserting a new user into the database...")
-    // const user = new User()
-    // user.firstName = "Timber"
-    // user.lastName = "Saw"
-    // user.age = 25
-    // await PostgresDataSource.manager.save(user)
-    // console.log("Saved a new user with id: " + user.id)
+    }).catch(error => {
+        console.error(`Data Source initialization error`, error);
+    })
 
-    // console.log("Loading users from the database...")
-    // const users = await PostgresDataSource.manager.find(User)
-    // console.log("Loaded users: ", users)
+const init = async () => {
 
-    console.log("Here you can setup and run express / fastify / any other framework.")
+    const server = Hapi.server({
+        port: process.env.APP_PORT,
+        host: process.env.APP_HOST
+    });
 
-}).catch(error => console.log(error))
+    server.route({
+        method: 'GET',
+        path: '/',
+        handler: (request: Request, h: ResponseToolkit, err?: Error) => {
+            return {
+                msg: 'hello World'
+            }
+        }
+    })
+
+    await server.start();
+    console.log(`Server running on ${server.info.uri}`.green);
+};
+
+process.on('unhandledRejection', (err) => {
+
+    console.log(err);
+    process.exit(1);
+});
+
+init();
