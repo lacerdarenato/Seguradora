@@ -10,7 +10,7 @@ await PostgresDataSource.initialize()
         console.log(`PostgresDataSource has been initialized`.blue);
 
     }).catch(error => {
-        console.error(`Data Source initialization error`, error);
+        console.error(error, `\nPostgresDataSource initialization error.`.red);
     })
 
 const init = async () => {
@@ -19,7 +19,7 @@ const init = async () => {
         port: process.env.APP_PORT,
         host: process.env.APP_HOST
     });
-
+    
     server.route(mainController())
     server.route(userController())
 

@@ -14,7 +14,7 @@ export class User extends SharedProps {
     id: number;
 
     @Column({ name: 'cpf', nullable: false }) 
-    cpf: number;
+    cpf: string;
 
     @Column({ name: 'first_name', nullable: false })
     firstName: string;
@@ -23,7 +23,7 @@ export class User extends SharedProps {
     lastName: string;
 
     @Column({ name: 'phone', nullable: false })
-    phone: number;
+    phone: string;
 
     @Column({ default: UserType.client, enum: UserType, type: 'enum', nullable: false })
     type: UserType;
