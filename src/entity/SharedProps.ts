@@ -7,12 +7,12 @@ export class SharedProps {
         type: 'timestamp',
         name: 'created_at',
     })
-    createdAt: Date
+    createdAt: Date;
 
     @UpdateDateColumn({
         default: () => 'CURRENT_TIMESTAMP',
         type: 'timestamp',
         name: 'updated_at',
     })
-    updatedAt: Date
+    updatedAt: Date;
 }

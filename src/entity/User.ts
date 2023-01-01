@@ -11,6 +11,9 @@ export enum UserType {
 export class User extends SharedProps {
 
     @PrimaryGeneratedColumn()
+    id: number;
+
+    @Column({ name: 'cpf', nullable: false }) 
     cpf: number;
 
     @Column({ name: 'first_name', nullable: false })
@@ -25,9 +28,6 @@ export class User extends SharedProps {
     @Column({ default: UserType.client, enum: UserType, type: 'enum', nullable: false })
     type: UserType;
 
-    @OneToMany(() => Vehicle, (vehicle: Vehicle) => vehicle.id, {
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
-    })
+    @OneToMany('Vehicle', 'user')
     vehicle: Array<Vehicle>;
 }

@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm'
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, ManyToMany, JoinTable } from 'typeorm'
+import { Accident } from './Accident.js';
 import { SharedProps } from './SharedProps.js';
 import { User } from './User.js';
 
@@ -16,11 +17,11 @@ export class Vehicle extends SharedProps {
     @Column({ name: 'license_plate', nullable: false })
     licensePlate: string;
 
-    @Column({ name: 'user_cpf', nullable: false})
-    userCpf: number
-
-    @ManyToOne(() => User, (user: User) => user.cpf)
-    @JoinColumn({ name: 'user_cpf' })
+    @ManyToOne('User', 'vehicle')
     user: User;
+
+    @ManyToMany(() => Accident, (event) => event.sinister)
+    @JoinTable()
+    event: Array<Accident>
 
 }

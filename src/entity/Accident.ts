@@ -1,5 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm'
 import { SharedProps } from './SharedProps.js';
+import { Vehicle } from './Vehicle.js';
 
 @Entity({ name: 'accident' })
 export class Accident extends SharedProps {
@@ -13,5 +14,8 @@ export class Accident extends SharedProps {
         name: 'date',
         nullable: false
     })
-    date: Date
+    date: Date;
+
+    @ManyToMany(() => Vehicle, (vehicle) => vehicle.id)
+    vehicles: Array<Vehicle>;
 }
