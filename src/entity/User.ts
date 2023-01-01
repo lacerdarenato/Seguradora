@@ -1,18 +1,26 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 
-@Entity()
+enum UserType{
+    client = 'client',
+    third = 'third',
+}
+
+@Entity({name: 'user'})
 export class User {
 
     @PrimaryGeneratedColumn()
-    id: number
+    cpf: number
 
-    @Column()
+    @Column({name: 'first_name', nullable: false})
     firstName: string
 
-    @Column()
+    @Column({name: 'last_name', nullable: false})
     lastName: string
 
-    @Column()
-    age: number
+    @Column({name: 'phone', nullable: false})
+    phone: number
+
+    @Column({default: UserType.client, enum: UserType, type: 'enum', nullable: false})
+    type: UserType
 
 }
