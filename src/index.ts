@@ -24,9 +24,8 @@ const init = async () => {
         method: 'GET',
         path: '/',
         handler: (request: Request, h: ResponseToolkit, err?: Error) => {
-            return {
-                msg: 'hello World'
-            }
+            return 'healty'
+            
         }
     })
 
