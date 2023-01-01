@@ -14,6 +14,4 @@ export class Accident extends SharedProps {
         nullable: false
     })
     date: Date
-
-
 }
