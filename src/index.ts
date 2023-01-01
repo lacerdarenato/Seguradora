@@ -1,13 +1,13 @@
 import * as Hapi from '@hapi/hapi';
-import { Server, ResponseToolkit, Request } from 'hapi'
 import 'colors'
 
-import { PostgresDataSource } from "./data-source.js"
-import { User } from "./entity/User.js"
+import { userController, mainController } from './controllers/index.js';
 
-PostgresDataSource.initialize()
+import { PostgresDataSource } from "./data-source.js"
+
+await PostgresDataSource.initialize()
     .then(async () => {
-        console.log(`PostgresDataSource has been initialized`);
+        console.log(`PostgresDataSource has been initialized`.blue);
 
     }).catch(error => {
         console.error(`Data Source initialization error`, error);
@@ -20,14 +20,8 @@ const init = async () => {
         host: process.env.APP_HOST
     });
 
-    server.route({
-        method: 'GET',
-        path: '/',
-        handler: (request: Request, h: ResponseToolkit, err?: Error) => {
-            return 'healty'
-            
-        }
-    })
+    server.route(mainController())
+    server.route(userController())
 
     await server.start();
     console.log(`Server running on ${server.info.uri}`.green);
