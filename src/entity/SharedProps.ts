@@ -4,15 +4,15 @@ export class SharedProps {
 
     @CreateDateColumn({
         default: () => 'CURRENT_TIMESTAMP',
-        type: 'datetime',
+        type: 'timestamp',
         name: 'created_at',
     })
     createdAt: Date
 
     @UpdateDateColumn({
         default: () => 'CURRENT_TIMESTAMP',
-        type: 'datetime',
-        name: 'ipdated_at',
+        type: 'timestamp',
+        name: 'updated_at',
     })
     updatedAt: Date
 }

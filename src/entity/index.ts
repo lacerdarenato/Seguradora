@@ -1,3 +1,3 @@
-export { User, UserType } from './User'
-export { Vehicle } from './Vehicle'
-export { Accident } from './Accident'
+export { User, UserType } from './User.js';
+export { Vehicle } from './Vehicle.js';
+export { Accident } from './Accident.js';
