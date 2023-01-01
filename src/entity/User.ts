@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 
-enum UserType{
+export enum UserType{
     client = 'client',
     third = 'third',
 }
