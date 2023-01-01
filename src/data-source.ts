@@ -1,6 +1,7 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
-import { User } from "./entity/User.js"
+
+import { Accident, User, Vehicle } from "./entity";
 
 import dotenv from "dotenv";
 dotenv.config()
@@ -13,7 +14,8 @@ const PostgresDataSource = new DataSource({
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
     database: "postgres",
-    entities: [User],
+    synchronize: true,
+    entities: [User, Vehicle, Accident],
     migrations: [],
     subscribers: [],
 })
