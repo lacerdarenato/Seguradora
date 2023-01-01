@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { SharedProps } from "./SharedProps.js"
 
 export enum UserType{
     client = 'client',
@@ -6,7 +7,7 @@ export enum UserType{
 }
 
 @Entity({name: 'user'})
-export class User {
+export class User extends SharedProps{
 
     @PrimaryGeneratedColumn()
     cpf: number

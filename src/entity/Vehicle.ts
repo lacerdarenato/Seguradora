@@ -1,7 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { SharedProps } from './SharedProps.js';
 
 @Entity({name: 'vehicle'})
-export class Vehicle{
+export class Vehicle extends SharedProps{
     @PrimaryGeneratedColumn()
     id: number;
 
