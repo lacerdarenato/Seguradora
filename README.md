@@ -1,4 +1,4 @@
-# Awesome Project Build with TypeORM
+# Seguradora
 
 Steps to run this project:
 
