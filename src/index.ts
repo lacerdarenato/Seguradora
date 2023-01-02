@@ -3,16 +3,6 @@ import 'colors'
 
 import { userController, mainController, vehicleController, accidentController } from './controllers/index.js';
 
-import { PostgresDataSource } from "./data-source.js"
-
-await PostgresDataSource.initialize()
-    .then(async () => {
-        console.log(`PostgresDataSource has been initialized`.blue);
-
-    }).catch(error => {
-        console.error(error, `\nPostgresDataSource initialization error.`.red);
-    })
-
 const init = async () => {
 
     const server = Hapi.server({

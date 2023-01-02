@@ -1,5 +1,6 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
+import 'colors'
 
 import dotenv from "dotenv";
 dotenv.config()
@@ -22,5 +23,13 @@ const PostgresDataSource = new DataSource({
     migrations: [],
     subscribers: [],
 })
+
+await PostgresDataSource.initialize()
+    .then(async () => {
+        console.log(`PostgresDataSource has been initialized`.blue);
+
+    }).catch(error => {
+        console.error(error, `\nPostgresDataSource initialization error.`.red);
+    })
 
 export { PostgresDataSource }
