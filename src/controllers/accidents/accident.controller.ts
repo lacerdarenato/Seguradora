@@ -15,14 +15,6 @@ export const accidentController = () => {
         },
         {
             method: 'GET',
-            path: '/accidents',
-            handler: (request: Request, h: ResponseToolkit, err?: Error) => {
-                return PostgresDataSource.manager.find(Accident);
-
-            }
-        },
-        {
-            method: 'GET',
             path: '/accidents/{id}',
             handler: ({ params: { sinister } }: Request, h: ResponseToolkit, err?: Error) => {
                 return PostgresDataSource.manager.findOneBy(Accident, { sinister: Number(sinister) });
