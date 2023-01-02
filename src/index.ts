@@ -14,6 +14,7 @@ const init = async () => {
     server.route(userController())
     server.route(vehicleController())
     server.route(accidentController())
+    server.route(mainController())
 
     await server.start();
     console.log(`Server running on ${server.info.uri}`.green);
