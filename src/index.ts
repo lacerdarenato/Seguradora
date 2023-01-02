@@ -1,7 +1,7 @@
 import * as Hapi from '@hapi/hapi';
 import 'colors'
 
-import { userController, mainController } from './controllers/index.js';
+import { userController, mainController, vehicleController, accidentController } from './controllers/index.js';
 
 import { PostgresDataSource } from "./data-source.js"
 
@@ -22,6 +22,8 @@ const init = async () => {
     
     server.route(mainController())
     server.route(userController())
+    server.route(vehicleController())
+    server.route(accidentController())
 
     await server.start();
     console.log(`Server running on ${server.info.uri}`.green);

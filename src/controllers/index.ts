@@ -1,4 +1,9 @@
-import { ResponseToolkit, Request } from 'hapi'
+import { ResponseToolkit, Request } from 'hapi';
+
+
+export { userController } from "./users/users.controller.js";
+export { vehicleController } from './vehicles/vehicle.controller.js';
+export { accidentController } from './accidents/accident.controller.js';
 
 export const mainController = () => {
     return [
@@ -11,5 +16,3 @@ export const mainController = () => {
         },
     ]
 }
-
-export { userController } from "./users/users.controller.js"
