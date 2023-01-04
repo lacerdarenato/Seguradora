@@ -17,11 +17,15 @@ export class Vehicle extends SharedProps {
     @Column({ name: 'license_plate', nullable: false })
     licensePlate: string;
 
+    @Column({name: 'user_Id', nullable: false})
+    userId: number;
+
     @ManyToOne('User', 'vehicle')
+    @JoinColumn({name: 'user_Id'})
     user: User;
 
-    @ManyToMany(() => Accident, (event) => event.sinister)
+    @ManyToMany((type) => Accident, (event) => event.sinister)
     @JoinTable()
-    event: Array<Accident>
+    event: Accident
 
 }
