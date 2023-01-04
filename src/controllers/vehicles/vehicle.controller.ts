@@ -1,6 +1,9 @@
 import { PostgresDataSource } from "../../data-source.js";
-import { Vehicle } from "../../entity/Vehicle.js";
 import { ResponseToolkit, Request } from 'hapi'
+
+import { Vehicle } from "../../entity/Vehicle.js";
+
+import { createVehicle, getVehiclesByUser } from "../../repository/index.js";
 
 
 export const vehicleController = () => {
@@ -22,21 +25,24 @@ export const vehicleController = () => {
             }
         },
         {
+            method: 'GET',
+            path: '/vehicles/user/{userId}',
+            handler: getVehiclesByUser
+        },
+        {
             method: 'POST',
             path: '/vehicles',
-            handler: ({ payload }: Request, h: ResponseToolkit, err?: Error) => {
-                const { model, color, licensePlate, user, event } = payload as Partial<Vehicle>;
-                const vehicle: Partial<Vehicle> = PostgresDataSource.manager.create(Vehicle,
-                    { model, color, licensePlate, user, event }
-                );
-                return PostgresDataSource.manager.save<Partial<Vehicle>>(vehicle);
-            }
+            handler: createVehicle
+
+            
         },
         {
             method: 'PATCH',
             path: '/vehicles/{id}',
             handler: async ({ params: { id }, payload }: Request, h: ResponseToolkit, err?: Error) => {
-                return await PostgresDataSource.manager.update<Partial<Vehicle>>(Vehicle, id, payload)
+                const teste = await PostgresDataSource.manager.update<Partial<Vehicle>>(Vehicle, id, payload)
+                console.log(teste)
+                return teste
             }
         },
     ]
