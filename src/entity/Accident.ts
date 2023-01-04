@@ -9,13 +9,12 @@ export class Accident extends SharedProps {
     sinister: number;
 
     @Column({
-        default: () => 'CURRENT_TIMESTAMP',
-        type: 'date',
         name: 'date',
+        type: 'date',
         nullable: false
     })
     date: Date;
 
-    @ManyToMany(() => Vehicle, (vehicle) => vehicle.id)
+    @ManyToMany(() => Vehicle, vehicle => vehicle.id, {cascade: true})
     vehicles: Array<Vehicle>;
 }
