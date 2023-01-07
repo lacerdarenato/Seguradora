@@ -5,9 +5,9 @@ import { ResponseToolkit, Request } from 'hapi';
 
 const createAccident = async ({ payload }: Request, h: ResponseToolkit, err?: Error) => {
     try {
-        const { sinister, date } = payload as Partial<Accident>;
+        const { date, vehicles } = payload as Partial<Accident>;
         const accident: Partial<Accident> = PostgresDataSource.manager.create(Accident,
-            { sinister, date }
+            { date, vehicles }
         );
         const savedAccident = await PostgresDataSource.manager.save<Partial<Accident>>(accident);
         return h
