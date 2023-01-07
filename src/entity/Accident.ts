@@ -21,11 +21,4 @@ export class Accident extends SharedProps {
     @ManyToMany((type) => Vehicle, (vehicle) => vehicle.id, { eager: true })
     @JoinTable()
     vehicles: Array<Vehicle>;
-
-    // addVehicle(vehicle: Vehicle) {
-    //     if (this.vehicles == null) {
-    //         this.vehicles = new Array<Vehicle>();
-    //     }
-    //     this.vehicles.push(vehicle)
-    // };
 }
