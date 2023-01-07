@@ -24,8 +24,8 @@ export class Vehicle extends SharedProps {
     @JoinColumn({name: 'user_Id'})
     user: User;
 
-    @ManyToMany((type) => Accident, (event) => event.sinister)
+    @ManyToMany((type) => Accident, (event) => event.id)
     @JoinTable()
-    event: Accident
+    event: Accident[];
 
 }
