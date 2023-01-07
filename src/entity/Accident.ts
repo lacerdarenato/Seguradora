@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm'
 import { SharedProps } from './SharedProps.js';
 import { Vehicle } from './Vehicle.js';
 
@@ -6,6 +6,9 @@ import { Vehicle } from './Vehicle.js';
 export class Accident extends SharedProps {
 
     @PrimaryGeneratedColumn()
+    id: number;
+
+    @Column({ unique: true, generated: true })
     sinister: number;
 
     @Column({
@@ -15,6 +18,14 @@ export class Accident extends SharedProps {
     })
     date: Date;
 
-    @ManyToMany(() => Vehicle, vehicle => vehicle.id, {cascade: true})
+    @ManyToMany((type) => Vehicle, (vehicle) => vehicle.id, { eager: true })
+    @JoinTable()
     vehicles: Array<Vehicle>;
+
+    // addVehicle(vehicle: Vehicle) {
+    //     if (this.vehicles == null) {
+    //         this.vehicles = new Array<Vehicle>();
+    //     }
+    //     this.vehicles.push(vehicle)
+    // };
 }
