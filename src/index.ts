@@ -1,19 +1,8 @@
-import * as Hapi from '@hapi/hapi';
+import server from './server.js'
 import 'colors'
 
-import { userController, mainController, vehicleController, accidentController } from './controllers/index.js';
 
 const init = async () => {
-
-    const server = Hapi.server({
-        port: process.env.APP_PORT,
-        host: process.env.APP_HOST
-    });
-    
-    server.route(mainController())
-    server.route(userController())
-    server.route(vehicleController())
-    server.route(accidentController())
 
     await server.start();
     console.log(`Server running on ${server.info.uri}`.green);
