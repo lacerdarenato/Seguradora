@@ -4,7 +4,7 @@ import { ResponseToolkit, Request } from 'hapi';
 
 
 const getUserByFilter = async (filter: Partial<User>) => {
-    return await PostgresDataSource.manager.findOneByOrFail(User, filter);
+    return await PostgresDataSource.manager.findOneBy(User, filter);
 }
 
 const editUser = async (user: Partial<User>) => {
@@ -37,7 +37,7 @@ const editClient = async ({ params: { id }, payload }: Request, h: ResponseToolk
 const createClient = async ({ payload }: Request, h: ResponseToolkit, err?: Error) => {
     try {
         const { cpf, firstName, lastName, phone } = payload as Partial<User>;
-        const user = await getUserByFilter({ cpf: cpf })
+        const user = await getUserByFilter({ cpf: cpf });
         if (user) {
             if (user.type === UserType.client) {
                 return h
@@ -56,10 +56,11 @@ const createClient = async ({ payload }: Request, h: ResponseToolkit, err?: Erro
             }
         }
         else {
+            const teste = await saveUser({ cpf, firstName, lastName, phone, type: UserType.client })
             return h
                 .response({
                     msg: 'Cliente cadastrado com sucesso',
-                    data: await saveUser({ cpf, firstName, lastName, phone, type: UserType.client })
+                    data: teste
                 }).code(201);
         }
 

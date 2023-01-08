@@ -3,7 +3,7 @@ import { Vehicle } from "../../entity/Vehicle.js";
 import { ResponseToolkit, Request } from 'hapi';
 
 const getVehicleByFilter = async (filter: Partial<Vehicle>) => {
-    return await PostgresDataSource.manager.findOneByOrFail(Vehicle, filter);
+    return await PostgresDataSource.manager.findOneBy(Vehicle, filter);
 }
 
 const editVehicle = async (vehicle: Partial<Vehicle>) => {
