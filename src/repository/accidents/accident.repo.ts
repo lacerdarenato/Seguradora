@@ -1,6 +1,7 @@
 import { PostgresDataSource } from "../../data-source.js";
-import { Accident } from "../../entity/Accident.js";
 import { ResponseToolkit, Request } from 'hapi';
+import { Accident } from "../../entity/Accident.js";
+import { Vehicle } from '../../entity/Vehicle.js'
 
 
 const createAccident = async ({ payload }: Request, h: ResponseToolkit, err?: Error) => {
@@ -14,14 +15,12 @@ const createAccident = async ({ payload }: Request, h: ResponseToolkit, err?: Er
             .response({
                 msg: "Acidente registrado com sucesso.",
                 data: savedAccident
-            })
-            .code(201);
+            }).code(201);
     } catch (error) {
         return h
             .response({
                 error: error.message
-            })
-            .code(400);
+            }).code(400);
     }
 }
 
