@@ -24,6 +24,23 @@ const PostgresDataSource = new DataSource({
     subscribers: [],
 })
 
+const PostgresDataSourceTest = new DataSource({
+    type: "postgres",
+    host: process.env.DATABSE_URI,
+    port: 5432,
+    username: 'test',
+    password: 'test',
+    database: "postgres",
+    synchronize: true,
+    entities: [
+        User,
+        Vehicle,
+        Accident
+    ],
+    migrations: [],
+    subscribers: [],
+})
+
 await PostgresDataSource.initialize()
     .then(async () => {
         console.log(`PostgresDataSource has been initialized`.blue);
@@ -36,4 +53,4 @@ await PostgresDataSource.initialize()
 //     .then(async () => { console.log(`Sincronizando banco.`) })
 //     .catch((error) => { console.error(`Erro ao sincronizar banco.`, error) })
 
-export { PostgresDataSource }
+export { PostgresDataSource, PostgresDataSourceTest }
