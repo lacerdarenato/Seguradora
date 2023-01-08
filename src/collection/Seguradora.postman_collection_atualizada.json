@@ -36,7 +36,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"cpf\": \"01987654321\",\r\n    \"firstName\": \"Renato3\",\r\n    \"lastName\": \"Lacerda3\",\r\n    \"phone\": \"31999919999\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -44,13 +44,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{server}}/users/1",
+							"raw": "{{server}}/users/2",
 							"host": [
 								"{{server}}"
 							],
 							"path": [
 								"users",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -90,7 +90,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"cpf\": \"12345677778\",\r\n    \"firstName\": \"Renato3\",\r\n    \"lastName\": \"Lacerda3\",\r\n    \"phone\": \"31999919999\"\r\n}",
+							"raw": "{\r\n    \"cpf\": \"12312312000\",\r\n    \"firstName\": \"Juruna\",\r\n    \"lastName\": \"Lacerda\",\r\n    \"phone\": \"1111\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -98,12 +98,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{server}}/users",
+							"raw": "{{server}}/users/client",
 							"host": [
 								"{{server}}"
 							],
 							"path": [
-								"users"
+								"users",
+								"client"
 							]
 						}
 					},
@@ -162,6 +163,37 @@
 					"response": []
 				},
 				{
+					"name": "get vehicles by userId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\": \"01987654321\",\r\n    \"firstName\": \"Renato3\",\r\n    \"lastName\": \"Lacerda3\",\r\n    \"phone\": \"31999919999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/vehicles/user/2",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"vehicles",
+								"user",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "update vehicle",
 					"request": {
 						"method": "PATCH",
@@ -195,7 +227,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"model\": \"fusca\",\r\n    \"color\": \"branco\",\r\n    \"licensePlate\": \"ddd4444\",\r\n    \"user\": \"2\",\r\n    \"event\": \"1\"\r\n}",
+							"raw": "{\r\n    \"model\": \"uno\",\r\n    \"color\": \"branco\",\r\n    \"licensePlate\": \"rrr5555\",\r\n    \"userId\": \"2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -237,7 +269,7 @@
 					"response": []
 				},
 				{
-					"name": "get accident by sinister",
+					"name": "get accident by id",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -254,13 +286,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{server}}/accidents/1",
+							"raw": "{{server}}/accidents/2",
 							"host": [
 								"{{server}}"
 							],
 							"path": [
 								"accidents",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -300,7 +332,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"date\": \"12-25-2022\"\r\n}",
+							"raw": "{\r\n    \"date\": \"2022-12-25\",\r\n    \"vehicles\": [\r\n        {\r\n            \"id\": 1\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -314,6 +346,33 @@
 							],
 							"path": [
 								"accidents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new accident test",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\": \"2022-12-25\",\r\n    \"vehicles\": [\r\n        {\r\n            \"model\": \"uno\",\r\n            \"color\": \"branco\",\r\n            \"licensePlate\": \"rrr4444\",\r\n            \"userId\": \"2\"\r\n        }\r\n    ],\r\n    \"third\": [\r\n        {\r\n            \"cpf\": \"12312312000\",\r\n            \"firstName\": \"Renato\",\r\n            \"lastName\": \"Lacerda\",\r\n            \"phone\": \"1111\"\r\n        },\r\n        {\r\n            \"cpf\": \"11111111111\",\r\n            \"firstName\": \"Larissa\",\r\n            \"lastName\": \"Caldas\",\r\n            \"phone\": \"2222\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/accidents/teste",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"accidents",
+								"teste"
 							]
 						}
 					},
