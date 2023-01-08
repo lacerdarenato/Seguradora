@@ -98,6 +98,18 @@ const addThird = async ({ payload }: Request, h: ResponseToolkit, err?: Error) =
     }
 }
 
+const addThirdTeste = async (payload: Partial<User>) => {
+
+    const { cpf, firstName, lastName, phone } = payload as Partial<User>;
+    const user = await getUserByFilter({ cpf: cpf })
+    if (user) {
+        return user
+    }
+    else {
+        return await saveUser({ cpf, firstName, lastName, phone, type: UserType.third })
+    }
+}
 
 
-export { createClient, addThird, editClient }
+
+export { createClient, addThird, editClient, getUserByFilter, addThirdTeste }
