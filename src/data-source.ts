@@ -49,8 +49,10 @@ await PostgresDataSource.initialize()
         console.error(error, `\nPostgresDataSource initialization error.`.red);
     })
 
+// await PostgresDataSource.dropDatabase()
 // await PostgresDataSource.synchronize()
 //     .then(async () => { console.log(`Sincronizando banco.`) })
 //     .catch((error) => { console.error(`Erro ao sincronizar banco.`, error) })
+
 
 export { PostgresDataSource, PostgresDataSourceTest }
